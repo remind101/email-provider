@@ -16,7 +16,10 @@ module EmailProvider
     private
 
       def supported_mail_exchange
-        mail_exchanges.join('').downcase[SUPPORTED_PROVIDERS]
+        mail_exchanges.each do |mx|
+          mx = mx.downcase
+          return mx if mx[SUPPORTED_PROVIDERS]
+        end
       end
 
       # Internal: Stringify's the mail exchange records.

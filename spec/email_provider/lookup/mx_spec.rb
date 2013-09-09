@@ -11,11 +11,11 @@ describe EmailProvider::Lookup::Mx do
       lookup.stub dns: dns
     end
 
-    it 'does something' do
+    it 'performs a dns lookup' do
       dns.should_receive(:getresources)
         .with('gmail.com', Resolv::DNS::Resource::IN::MX)
-        .and_return([double('Record', exchange: 'gmail.com')])
-      expect(lookup.lookup).to eq 'gmail.com'
+        .and_return([double('Record', exchange: 'google.com')])
+      expect(lookup.lookup).to eq 'google.com'
     end
   end
 end

@@ -1,5 +1,9 @@
 require 'spec_helper'
 
 describe EmailProvider do
-  pending '.find'
+  describe '.find' do
+    it do
+      described_class.find('eric@ejholmes.net')
+    end
+  end
 end

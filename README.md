@@ -1,6 +1,8 @@
-# Email::Provider
+# Email Provider
 
-TODO: Write a gem description
+A gem for determining the email provider, given an email address. It does this
+by lookup at the MX records for the domain of the email address, and does it's
+best effort guess.
 
 ## Installation
 

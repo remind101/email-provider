@@ -1,9 +1,10 @@
 require 'resolv'
+require 'mail'
 
 module EmailProvider
-  PROVIDERS = %w[unkown google hotmail aol yahoo].map(&:to_sym)
-
   autoload :Lookup, 'email_provider/lookup'
+  autoload :DomainParser, 'email_provider/domain_parser'
+  autoload :Normalizer, 'email_provider/normalizer'
 
   # Public: Returns the email provider for the given email.
   #
@@ -11,6 +12,5 @@ module EmailProvider
   #
   # Returns the Symbol name of the provider.
   def self.find(email)
-    Lookup.new(email).lookup
   end
 end

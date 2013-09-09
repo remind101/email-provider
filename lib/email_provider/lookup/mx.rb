@@ -1,6 +1,8 @@
 module EmailProvider
   module Lookup
     class Mx < Base
+      SUPPORTED_PROVIDERS = /google|outlook|hotmail|aol|yahoo/
+
       attr_reader :email
 
       def initialize(email)
@@ -8,10 +10,14 @@ module EmailProvider
       end
 
       def lookup
-        DomainParser.parse(mail_exchanges.first)
+        DomainParser.parse(supported_mail_exchange)
       end
 
     private
+
+      def supported_mail_exchange
+        mail_exchanges.join('').downcase[SUPPORTED_PROVIDERS]
+      end
 
       # Internal: Stringify's the mail exchange records.
       def mail_exchanges
